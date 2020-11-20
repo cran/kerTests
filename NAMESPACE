@@ -1,0 +1,2 @@
+export(kertests, med_sigma)
+importFrom("stats", "dist", "median", "pnorm")
