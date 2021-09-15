@@ -31,7 +31,7 @@ kertests = function(X, Y, sigma, r1=1.2, r2=0.8, perm=0) {
   var_Ky = (2*A*q1 + 4*B*q2 + C*q3)/n/n/(n-1)/(n-1) - mu_Ky^2
   cov_Kx_Ky = C/N/(N-1)/(N-2)/(N-3) - mu_Kx*mu_Ky
 
-  # test statistic S
+  # test statistic GPK
   COV = matrix(c(var_Kx,cov_Kx_Ky,cov_Kx_Ky,var_Ky), nrow=2)
   Sinv = solve(COV)
   kmv = c(Kx-mu_Kx, Ky-mu_Ky)
@@ -57,20 +57,25 @@ kertests = function(X, Y, sigma, r1=1.2, r2=0.8, perm=0) {
   mean.W2 = mu_Kx*u.W2 + mu_Ky*v.W2
   var.W2 = var_Kx*u.W2^2 + var_Ky*v.W2^2 + 2*u.W2*v.W2*cov_Kx_Ky
   Z.W2 = (Kx*u.W2 + Ky*v.W2 - mean.W2)/sqrt(var.W2)
-
+  
   temp_approx = sort( c(pnorm(-Z.W1), pnorm(-Z.W2), 2*pnorm(-abs(Z.D))) )
-  fGPK_appr = min( 3*temp_approx[1], 1.5*temp_approx[2], 2*temp_approx[3] )
-
+  fGPK_appr = 3*min( temp_approx[1], temp_approx[2], temp_approx[3] )
+  
   temp_approx1 = sort( c(pnorm(-Z.W1), pnorm(-Z.W2)) )
-  fGPKM_appr = min( 2*temp_approx1[1], temp_approx1[2] )
+  fGPKM_appr = 2*min( temp_approx1[1], temp_approx1[2] )
+
+  fGPK_Simes_appr = min( 3*temp_approx[1], 1.5*temp_approx[2], temp_approx[3] )
+  fGPKM_Simes_appr = min( 2*temp_approx1[1], temp_approx1[2] )
 
   result = list()
   result$teststat$GPK = GPK
   result$teststat$ZW1 = Z.W1
   result$teststat$ZW2 = Z.W2
   result$teststat$ZD = Z.D
-  result$pval$fGPK_appr = fGPK_appr
-  result$pval$fGPKM_appr = fGPKM_appr
+  result$pval$fGPK_appr = min(1,fGPK_appr)
+  result$pval$fGPKM_appr = min(1,fGPKM_appr)
+  result$pval$fGPK_Simes_appr = min(1,fGPK_Simes_appr)
+  result$pval$fGPKM_Simes_appr = min(1,fGPKM_Simes_appr)
 
 
   if (perm>0) {
@@ -100,16 +105,21 @@ kertests = function(X, Y, sigma, r1=1.2, r2=0.8, perm=0) {
     perm_pval_Z.D = 2*length(which(temp2>=abs(Z.D)))/perm
     perm_pval_Z.W1 = length(which(temp3>=Z.W1))/perm
     perm_pval_Z.W2 = length(which(temp4>=Z.W2))/perm
-
+    
     temp_perm = sort(c(perm_pval_Z.W1, perm_pval_Z.W2, perm_pval_Z.D))
-    fGPK_perm = min( 3*temp_perm[1], 1.5*temp_perm[2], temp_perm[3] )
-
+    fGPK_perm = 3*min( temp_perm[1], temp_perm[2], temp_perm[3] )
+    
     temp_perm1 = sort(c(perm_pval_Z.W1, perm_pval_Z.W2))
-    fGPKM_perm = min( 2*temp_perm1[1], temp_perm1[2])
+    fGPKM_perm = 2*min( temp_perm1[1], temp_perm1[2])
 
-    result$pval$GPK_perm = GPK_perm
-    result$pval$fGPK_perm = fGPK_perm
-    result$pval$fGPKM_perm = fGPKM_perm
+    fGPK_Simes_perm = min( 3*temp_perm[1], 1.5*temp_perm[2], temp_perm[3] )
+    fGPKM_Simes_perm = min( 2*temp_perm1[1], temp_perm1[2])
+
+    result$pval$GPK_perm = min(1,GPK_perm)
+    result$pval$fGPK_perm = min(1,fGPK_perm)
+    result$pval$fGPKM_perm = min(1,fGPKM_perm)
+    result$pval$fGPK_Simes_perm = min(1,fGPK_Simes_perm)
+    result$pval$fGPKM_Simes_perm = min(1,fGPKM_Simes_perm)
   }
 
   return(result)

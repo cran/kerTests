@@ -22,9 +22,13 @@ kertests(X, Y, sigma, r1=1.2, r2=0.8, perm=0)
   \item{ZD}{The value of the test statistic \eqn{\textrm{Z}_{D}}.}
   \item{fGPK_appr}{The approximated p-value of fGPK based on asymptotic theory.}
   \item{fGPKM_appr}{The approximated p-value of \eqn{\textrm{fGPK}_{M}} based on asymptotic theory.}
+  \item{fGPK_Simes_appr}{The approximated p-value of fGPK based on asymptotic theory with a Simes procedure.}
+  \item{fGPKM_Simes_appr}{The approximated p-value of \eqn{\textrm{fGPK}_{M}} based on asymptotic theory with a Simes procedure.}
   \item{GPK_perm}{The permutation p-value of GPK when argument `perm' is positive.}
   \item{fGPK_perm}{The permutation p-value of fGPK when argument `perm' is positive.}
   \item{fGPKM_perm}{The permutation p-value of \eqn{\textrm{fGPK}_{M}} when argument `perm' is positive.}
+  \item{fGPK_Simes_perm}{The permutation p-value of fGPK with a Simes procedure when argument `perm' is positive.}
+  \item{fGPKM_Simes_perm}{The permutation p-value of \eqn{\textrm{fGPK}_{M}} with a Simes procedure when argument `perm' is positive.}
 }
 \seealso{
   \code{\link{kerTests}}
