@@ -1,5 +1,5 @@
 \name{kerTests}
-\alias{kerTests}
+\alias{kerTests-package}
 \title{Generalized Kernel Two-Sample Tests}
 \description{This package can be used to determine whether two samples are from the same distribution. The Gaussian kernel with the median heuristic, which is the median of all pairwise distances among observations, is used. To obtain the median heuristic, the function \code{\link{med_sigma}} should be used. The main function is \code{\link{kertests}}
 }

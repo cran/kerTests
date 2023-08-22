@@ -31,9 +31,7 @@ kertests(X, Y, sigma, r1=1.2, r2=0.8, perm=0)
   \item{fGPKM_Simes_perm}{The permutation p-value of \eqn{\textrm{fGPK}_{M}} with a Simes procedure when argument `perm' is positive.}
 }
 \seealso{
-  \code{\link{kerTests}}
-
-  \code{\link{med_sigma}}
+  \code{\link{kerTests-package}}, \code{\link{med_sigma}}
 }
 \examples{
 

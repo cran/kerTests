@@ -1,7 +1,7 @@
-3381e0d31c145e80c3ad9825e023a6f3 *DESCRIPTION
+2a653c5d4aa7623f0bd966df0e18ccae *DESCRIPTION
 30655968ea8feda32aba7c4c29b57b4d *NAMESPACE
 84a5a1fd867bd5eecc01484b9867179d *R/MED_sigma.R
 7c007806416bb9f04fb7eeacbffd53d4 *R/kerTests.R
-d815fc4d3666924618f3ef1a8531c982 *man/kerTests-package.Rd
-8101c17e61711405d283c870ad1f1d65 *man/kertests.Rd
-0065fd975b27fdf5142b045c6a6336ef *man/med_sigma.Rd
+dee8b36331c48018126cca54e41885ae *man/kerTests-package.Rd
+18946877a439d4927f13c5fae50d1294 *man/kertests.Rd
+51e9e6e70baeebd211028fb71e225a59 *man/med_sigma.Rd

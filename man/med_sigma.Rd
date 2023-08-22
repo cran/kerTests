@@ -13,9 +13,7 @@ med_sigma(X, Y)
   Returns a numeric value, the median heuristic, which is the median of all pairwise distances among pooled observations, as a bandwidth of the kernel.
 }
 \seealso{
-  \code{\link{kerTests}}
-
-  \code{\link{kertests}}
+  \code{\link{kerTests-package}}, \code{\link{kertests}}
 }
 \examples{
 ## Mean difference in Gaussian distribution.
